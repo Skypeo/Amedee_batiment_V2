@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:william-amedeebatiment.fr)",
+      "Bash(python *)",
+      "Bash(py --version)",
+      "Bash(py *)"
+    ]
+  }
+}
