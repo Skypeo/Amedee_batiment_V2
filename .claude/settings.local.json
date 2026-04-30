@@ -4,7 +4,11 @@
       "WebFetch(domain:william-amedeebatiment.fr)",
       "Bash(python *)",
       "Bash(py --version)",
-      "Bash(py *)"
+      "Bash(py *)",
+      "Bash(grep -E \"html$|xml$|txt$\")",
+      "Bash(python3 -c \"from PIL import Image; print\\(Image.__version__\\)\")",
+      "Bash(where py *)",
+      "Bash(C:/Users/monke/AppData/Local/Python/bin/python.exe *)"
     ]
   }
 }

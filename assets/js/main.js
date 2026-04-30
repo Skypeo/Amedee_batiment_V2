@@ -50,7 +50,10 @@
 
       <div class="menu-overlay__top">
         <a href="index.html" class="menu-overlay__logo" aria-label="Amédée Rénovation - Accueil">
-          <img src="assets/images/Logo_AmedeeBatiment.png" alt="Amédée Rénovation">
+          <picture>
+            <source type="image/webp" srcset="assets/images/Logo_AmedeeBatiment.webp">
+            <img src="assets/images/Logo_AmedeeBatiment.png" alt="Amédée Rénovation">
+          </picture>
         </a>
         <button type="button" class="menu-overlay__close" aria-label="Fermer le menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
