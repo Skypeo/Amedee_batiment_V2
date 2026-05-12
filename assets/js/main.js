@@ -146,6 +146,67 @@
     }
   });
 
+  /* ============ FORMULAIRE CONTACT (Web3Forms) ============ */
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    const status = document.getElementById("formStatus");
+    const submitBtn = contactForm.querySelector(".form-submit");
+    const submitLabel = submitBtn ? submitBtn.querySelector(".form-submit__label") : null;
+    const initialLabel = submitLabel ? submitLabel.textContent : "Envoyer";
+
+    const setStatus = (type, message) => {
+      if (!status) return;
+      status.hidden = false;
+      status.className = "form-status form-status--" + type;
+      status.textContent = message;
+    };
+
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Validation native (HTML5)
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+
+      const formData = new FormData(contactForm);
+
+      // Sujet email enrichi avec le service choisi
+      const service = formData.get("service");
+      if (service) {
+        formData.set("subject", "Demande devis — " + service);
+      }
+
+      submitBtn.disabled = true;
+      if (submitLabel) submitLabel.textContent = "Envoi en cours…";
+      setStatus("loading", "Envoi en cours…");
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: formData,
+        });
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          setStatus("success", "Merci ! Votre message a bien été envoyé. William vous répondra sous 48h.");
+          contactForm.reset();
+          if (submitLabel) submitLabel.textContent = "Message envoyé";
+        } else {
+          setStatus("error", (data && data.message) || "Une erreur est survenue. Merci de réessayer ou d'appeler directement le 06 33 39 31 95.");
+          submitBtn.disabled = false;
+          if (submitLabel) submitLabel.textContent = initialLabel;
+        }
+      } catch (err) {
+        setStatus("error", "Connexion impossible. Merci d'appeler directement le 06 33 39 31 95.");
+        submitBtn.disabled = false;
+        if (submitLabel) submitLabel.textContent = initialLabel;
+      }
+    });
+  }
+
   /* ============ ANIMATIONS GSAP ============ */
   const initAnimations = () => {
     if (typeof window.gsap === "undefined") return;

@@ -189,8 +189,16 @@
           </div>
         </div>
 
-        <form class="contact__form" action="#" method="post" novalidate>
+        <form class="contact__form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
           <h2 class="contact__form-title">Envoyer un message</h2>
+
+          <!-- Web3Forms -->
+          <input type="hidden" name="access_key" value="7fa3680a-b956-4866-952e-3a62a8feb5a0">
+          <input type="hidden" name="subject" value="Nouvelle demande — Site Amédée Rénovation">
+          <input type="hidden" name="from_name" value="Site amedee-renovation.fr">
+          <input type="hidden" name="redirect" value="false">
+          <!-- Honeypot anti-bot -->
+          <input type="checkbox" name="botcheck" class="form-honeypot" tabindex="-1" autocomplete="off">
 
           <div class="contact__form-grid">
             <label class="form-field">
@@ -210,14 +218,14 @@
 
           <label class="form-field">
             <span class="form-field__label">Sujet</span>
-            <select name="subject" required>
+            <select name="service" required>
               <option value="">Choisir un sujet…</option>
-              <option value="toiture">Toiture : neuf &amp; rénovation</option>
-              <option value="charpente">Charpente &amp; isolation</option>
-              <option value="etancheite">Étanchéité de toiture</option>
-              <option value="maconnerie">Maçonnerie générale</option>
-              <option value="urgence">Urgence (infiltration, fuite…)</option>
-              <option value="autre">Autre demande</option>
+              <option value="Toiture : neuf & rénovation">Toiture : neuf &amp; rénovation</option>
+              <option value="Charpente & isolation">Charpente &amp; isolation</option>
+              <option value="Étanchéité de toiture">Étanchéité de toiture</option>
+              <option value="Maçonnerie générale">Maçonnerie générale</option>
+              <option value="Urgence (infiltration, fuite)">Urgence (infiltration, fuite…)</option>
+              <option value="Autre demande">Autre demande</option>
             </select>
           </label>
 
@@ -232,9 +240,11 @@
           </label>
 
           <button type="submit" class="btn btn--primary btn--large form-submit">
-            Envoyer
+            <span class="form-submit__label">Envoyer</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </button>
+
+          <div class="form-status" id="formStatus" role="status" aria-live="polite" hidden></div>
 
           <p class="form-note">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="6" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>

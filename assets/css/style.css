@@ -2991,6 +2991,46 @@ ol {
   align-self: flex-start;
   margin-top: var(--s-2);
 }
+.form-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Honeypot anti-bot — invisible mais focusable uniquement par les bots */
+.form-honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* États de retour de soumission */
+.form-status {
+  margin-top: var(--s-2);
+  padding: 0.875rem 1rem;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  border: 1px solid transparent;
+}
+.form-status--loading {
+  background: var(--c-cream-2);
+  color: var(--c-graphite);
+  border-color: var(--c-line);
+}
+.form-status--success {
+  background: #EEF7EE;
+  color: #1F6B2C;
+  border-color: #C8E6CC;
+}
+.form-status--error {
+  background: #FDEDEA;
+  color: var(--c-red-dark);
+  border-color: #F4C7C0;
+}
 
 .form-note {
   display: inline-flex;
