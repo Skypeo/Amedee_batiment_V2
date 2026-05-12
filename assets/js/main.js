@@ -49,10 +49,10 @@
       <div class="menu-overlay__bg-letter" aria-hidden="true">AMEDEE</div>
 
       <div class="menu-overlay__top">
-        <a href="index.html" class="menu-overlay__logo" aria-label="Amédée Rénovation - Accueil">
+        <a href="/" class="menu-overlay__logo" aria-label="Amédée Rénovation - Accueil">
           <picture>
-            <source type="image/webp" srcset="assets/images/Logo_AmedeeBatiment.webp">
-            <img src="assets/images/Logo_AmedeeBatiment.png" alt="Amédée Rénovation">
+            <source type="image/webp" srcset="/assets/images/Logo_AmedeeBatiment.webp">
+            <img src="/assets/images/Logo_AmedeeBatiment.png" alt="Amédée Rénovation">
           </picture>
         </a>
         <button type="button" class="menu-overlay__close" aria-label="Fermer le menu">
@@ -65,22 +65,22 @@
 
       <nav class="menu-overlay__nav" aria-label="Navigation principale">
         <ul class="menu-overlay__list">
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/a-propos/">À propos</a></li>
           <li>
             <div class="menu-overlay__service-row">
-              <a href="index.html#services">Services</a>
+              <a href="/#services">Services</a>
               <button type="button" class="menu-overlay__sub-toggle" aria-label="Afficher les services" aria-expanded="false"></button>
             </div>
             <ul class="menu-overlay__sub">
-              <li><a href="toiture-couverture.html">Toiture : neuf &amp; rénovation</a></li>
-              <li><a href="charpente-isolation.html">Charpente &amp; isolation</a></li>
-              <li><a href="etancheite-toiture.html">Étanchéité de toiture</a></li>
-              <li><a href="maconnerie-generale.html">Maçonnerie générale</a></li>
+              <li><a href="/toiture-couverture/">Toiture : neuf &amp; rénovation</a></li>
+              <li><a href="/charpente-isolation/">Charpente &amp; isolation</a></li>
+              <li><a href="/etancheite-toiture/">Étanchéité de toiture</a></li>
+              <li><a href="/maconnerie-generale/">Maçonnerie générale</a></li>
             </ul>
           </li>
-          <li><a href="zones-intervention.html">Zones d'intervention</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/zones-intervention/">Zones d'intervention</a></li>
+          <li><a href="/contact/">Contact</a></li>
         </ul>
       </nav>
 

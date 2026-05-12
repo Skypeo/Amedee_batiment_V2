@@ -43,26 +43,37 @@ Refonte du site WordPress de William Amédée (artisan charpentier-couvreur-maç
 
 ```
 AmedeeBatiment_V2/
-├── index.html              # Accueil
+├── index.html                       # Accueil (racine)
+├── a-propos/index.html
+├── contact/index.html
+├── toiture-couverture/index.html
+├── charpente-isolation/index.html
+├── etancheite-toiture/index.html
+├── maconnerie-generale/index.html
+├── zones-intervention/index.html
+├── sitemap.xml
+├── robots.txt
 ├── CLAUDE.md
-├── Images/                 # Images source du client (à conserver)
+├── Images/                          # Images source du client (à conserver)
 └── assets/
     ├── css/
-    │   └── style.css       # Tout-en-un (tokens + base + composants + sections)
+    │   └── style.css                # Tout-en-un (tokens + base + composants + sections)
     ├── js/
-    │   └── main.js         # Header scroll + GSAP timeline hero + magnétique
-    ├── images/             # Photos optimisées pour le site
-    └── icons/              # SVG (vide pour l'instant)
+    │   └── main.js                  # Header scroll + GSAP timeline hero + magnétique + form contact
+    ├── images/                      # Photos optimisées pour le site
+    └── icons/                       # SVG (vide pour l'instant)
 ```
 
 ## Pages prévues (multi-pages, bon SEO local)
-- `/` — Accueil ✅ Hero en cours
-- `/charpente-couverture.html` — Service détaillé
-- `/etancheite-zinguerie.html` — Service détaillé
-- `/isolation.html` — Service détaillé
-- `/maconnerie-generale.html` — Service détaillé
-- `/a-propos.html`
-- `/contact.html`
+URLs propres via structure en dossiers (cf. Décisions).
+- `/` — Accueil
+- `/toiture-couverture/` — Service détaillé
+- `/charpente-isolation/` — Service détaillé
+- `/etancheite-toiture/` — Service détaillé
+- `/maconnerie-generale/` — Service détaillé
+- `/zones-intervention/`
+- `/a-propos/`
+- `/contact/`
 
 ## Sections de la page d'accueil
 1. Header sticky (transparent → cream blur au scroll)
@@ -81,6 +92,13 @@ AmedeeBatiment_V2/
 - **Multi-pages** plutôt que single-page pour le SEO local
 - **CSS unique** (`style.css`) pour limiter les requêtes HTTP
 - **GSAP via CDN** (pas de bundler, déploiement zip → Hostinger en glisser-déposer)
+- **URLs propres via structure en dossiers** (pas de `.htaccess`) :
+  - Chaque page = un dossier contenant `index.html` (ex. `contact/index.html` → URL `/contact/`)
+  - **Tous les paths assets sont absolus** (`/assets/...`, `/Images/...`) pour fonctionner depuis n'importe quel sous-dossier
+  - **Tous les liens internes sont absolus** (`href="/contact/"`, `href="/#services"`) pour la même raison
+  - Marche sur n'importe quel host (Apache, Nginx, etc.) — pas de magie serveur
+  - ⚠️ Conséquence : la nav interne ne fonctionne plus en `file://` local (les liens `/contact/` cherchent à la racine du disque) — tester via un serveur local (`python -m http.server`) ou directement sur Hostinger
+- **Formulaire contact** branché sur [Web3Forms](https://web3forms.com) (clé `7fa3680a-…` dans `contact/index.html`) — soumission AJAX inline, message succès/erreur, honeypot anti-bot
 
 ## Performance & SEO
 - Polices : `display=swap` + preconnect
